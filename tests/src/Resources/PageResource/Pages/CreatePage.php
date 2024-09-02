@@ -2,8 +2,8 @@
 
 namespace Awcodes\Recently\Tests\Resources\PageResource\Pages;
 
-use Filament\Resources\Pages\CreateRecord;
 use Awcodes\Recently\Tests\Resources\PageResource;
+use Filament\Resources\Pages\CreateRecord;
 
 class CreatePage extends CreateRecord
 {

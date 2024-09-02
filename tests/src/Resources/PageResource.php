@@ -2,13 +2,13 @@
 
 namespace Awcodes\Recently\Tests\Resources;
 
+use Awcodes\Recently\Tests\Models\Page;
+use Awcodes\Recently\Tests\Resources\PageResource\Pages;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Awcodes\Recently\Tests\Models\Page;
-use Awcodes\Recently\Tests\Resources\PageResource\Pages;
 
 class PageResource extends Resource
 {

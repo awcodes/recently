@@ -2,7 +2,6 @@
 
 namespace Awcodes\Recently\Tests;
 
-use Awcodes\Recently\RecentlyPlugin;
 use Awcodes\Recently\Tests\Resources\PageResource;
 use Exception;
 use Filament\Http\Middleware\Authenticate;

@@ -2,9 +2,9 @@
 
 namespace Awcodes\Recently\Tests\Resources\PageResource\Pages;
 
+use Awcodes\Recently\Tests\Resources\PageResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
-use Awcodes\Recently\Tests\Resources\PageResource;
 
 class ListPages extends ListRecords
 {

@@ -3,9 +3,9 @@
 namespace Awcodes\Recently\Tests\Resources\PageResource\Pages;
 
 use Awcodes\Recently\Concerns\IsHistorical;
+use Awcodes\Recently\Tests\Resources\PageResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
-use Awcodes\Recently\Tests\Resources\PageResource;
 
 class EditPage extends EditRecord
 {

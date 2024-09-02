@@ -2,9 +2,9 @@
 
 namespace Awcodes\Recently\Tests\Models;
 
+use Awcodes\Recently\Tests\Database\Factories\UserFactory;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
-use Awcodes\Recently\Tests\Database\Factories\UserFactory;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
