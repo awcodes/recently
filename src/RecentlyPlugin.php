@@ -3,6 +3,7 @@
 namespace Awcodes\Recently;
 
 use Awcodes\Recently\Livewire\RecentlyMenu;
+use Awcodes\Recently\Resources\RecentEntryResource;
 use Closure;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
@@ -38,7 +39,10 @@ class RecentlyPlugin implements Plugin
             ->renderHook(
                 name: $this->getRenderHook(),
                 hook: fn () => Blade::render('<livewire:recently />')
-            );
+            )
+            ->resources([
+                RecentEntryResource::class,
+            ]);
     }
 
     public function boot(Panel $panel): void
@@ -106,7 +110,7 @@ class RecentlyPlugin implements Plugin
 
     public function getMaxItems(): int
     {
-        return $this->evaluate($this->maxItems) ?? 20;
+        return $this->evaluate($this->maxItems) ?? config('recently.max_items');
     }
 
     public function getRenderHook(): string
