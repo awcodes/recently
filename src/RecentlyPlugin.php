@@ -34,7 +34,7 @@ class RecentlyPlugin implements Plugin
 
     public function getId(): string
     {
-        return 'recently';
+        return 'awcodes/recently';
     }
 
     public function register(Panel $panel): void
@@ -110,7 +110,7 @@ class RecentlyPlugin implements Plugin
         return $this;
     }
 
-    public function maxWidth(string | Closure $width): static
+    public function width(string | Closure $width): static
     {
         $this->width = $width;
 
@@ -133,7 +133,7 @@ class RecentlyPlugin implements Plugin
 
     public function getIcon(): string
     {
-        return $this->evaluate($this->icon) ?? 'heroicon-o-arrow-uturn-left';
+        return $this->evaluate($this->icon) ?? config('recently.icon');
     }
 
     public function getLabel(): ?string

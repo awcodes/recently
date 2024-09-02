@@ -41,7 +41,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Awcodes\\Recently\\Tests\\": "tests/"
+            "Awcodes\\Recently\\Tests\\": "tests/src",
+            "Awcodes\\Recently\\Tests\\Database\\Factories\\": "tests/database/factories"
         }
     },
     "scripts": {

@@ -7,4 +7,5 @@ return [
     'width' => 'xs',
     'global_search' => true,
     'menu' => true,
+    'icon' => 'heroicon-o-arrow-uturn-left',
 ];
