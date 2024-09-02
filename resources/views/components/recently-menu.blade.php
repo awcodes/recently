@@ -1,5 +1,5 @@
 <div class="recently-menu">
-    <x-filament::dropdown placement="bottom-end" :teleport="true">
+    <x-filament::dropdown placement="bottom-end" :teleport="true" :width="$width">
         <x-slot name="trigger">
             <button
                 @class([

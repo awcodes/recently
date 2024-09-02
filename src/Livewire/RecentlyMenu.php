@@ -18,6 +18,8 @@ class RecentlyMenu extends Component
 
     public ?string $icon = null;
 
+    public ?string $width = null;
+
     public function mount(): void
     {
         $plugin = RecentlyPlugin::get();
@@ -29,6 +31,7 @@ class RecentlyMenu extends Component
         $this->rounded = $plugin->isRounded();
         $this->label = $plugin->getLabel();
         $this->icon = $plugin->getIcon();
+        $this->width = $plugin->getWidth();
     }
 
     public function clearRecords(): void

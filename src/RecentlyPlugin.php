@@ -24,6 +24,8 @@ class RecentlyPlugin implements Plugin
 
     protected string | Closure | null $icon = null;
 
+    protected string | Closure | null $width = null;
+
     protected int | Closure | null $maxItems = null;
 
     protected bool | Closure | null $hasGlobalSearch = null;
@@ -108,6 +110,13 @@ class RecentlyPlugin implements Plugin
         return $this;
     }
 
+    public function maxWidth(string | Closure $width): static
+    {
+        $this->width = $width;
+
+        return $this;
+    }
+
     public function renderUsingHook(string | Closure $panelHook): static
     {
         $this->renderUsingHook = $panelHook;
@@ -135,6 +144,11 @@ class RecentlyPlugin implements Plugin
     public function getMaxItems(): int
     {
         return $this->evaluate($this->maxItems) ?? config('recently.max_items');
+    }
+
+    public function getWidth(): string
+    {
+        return $this->evaluate($this->width) ?? config('recently.width');
     }
 
     public function getRenderHook(): string
