@@ -96,8 +96,8 @@ class RecentlyServiceProvider extends PackageServiceProvider
     {
         return [
             // AlpineComponent::make('recently', __DIR__ . '/../resources/dist/components/recently.js'),
-//            Css::make('recently-styles', __DIR__ . '/../resources/dist/recently.css'),
-//            Js::make('recently-scripts', __DIR__ . '/../resources/dist/recently.js'),
+            //            Css::make('recently-styles', __DIR__ . '/../resources/dist/recently.css'),
+            //            Js::make('recently-scripts', __DIR__ . '/../resources/dist/recently.js'),
         ];
     }
 
