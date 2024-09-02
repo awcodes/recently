@@ -7,7 +7,7 @@
                     'rounded-full' => $rounded,
                     'rounded-md' => ! $rounded,
                     'w-8 h-8' => ! $label,
-                    'py-1 ps-3 pe-4 gap-1' => $label,
+                    'py-1 ps-3 pe-4 gap-1 w-full' => $label,
                 ])
                 aria-label="{{ __('recently::recently.trigger_label') }}"
             >

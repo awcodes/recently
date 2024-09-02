@@ -26,6 +26,10 @@ class RecentlyPlugin implements Plugin
 
     protected int | Closure | null $maxItems = null;
 
+    protected bool | Closure | null $hasGlobalSearch = null;
+
+    protected bool | Closure | null $hasMenu = null;
+
     public function getId(): string
     {
         return 'recently';
@@ -33,16 +37,22 @@ class RecentlyPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        Livewire::component('recently', RecentlyMenu::class);
+        if ($this->hasMenu()) {
+            Livewire::component('recently', RecentlyMenu::class);
 
-        $panel
-            ->renderHook(
-                name: $this->getRenderHook(),
-                hook: fn () => Blade::render('<livewire:recently />')
-            )
-            ->resources([
-                RecentEntryResource::class,
-            ]);
+            $panel
+                ->renderHook(
+                    name: $this->getRenderHook(),
+                    hook: fn () => Blade::render('<livewire:recently />')
+                );
+        }
+
+        if ($this->hasGlobalSearch()) {
+            $panel
+                ->resources([
+                    RecentEntryResource::class,
+                ]);
+        }
     }
 
     public function boot(Panel $panel): void
@@ -61,6 +71,20 @@ class RecentlyPlugin implements Plugin
         $plugin = filament(app(static::class)->getId());
 
         return $plugin;
+    }
+
+    public function globalSearch(bool | Closure $condition = true): static
+    {
+        $this->hasGlobalSearch = $condition;
+
+        return $this;
+    }
+
+    public function menu(bool | Closure $condition = true): static
+    {
+        $this->hasMenu = $condition;
+
+        return $this;
     }
 
     public function icon(string | Closure $icon): static
@@ -116,6 +140,16 @@ class RecentlyPlugin implements Plugin
     public function getRenderHook(): string
     {
         return $this->evaluate($this->renderUsingHook) ?? PanelsRenderHook::USER_MENU_BEFORE;
+    }
+
+    public function hasGlobalSearch(): bool
+    {
+        return $this->evaluate($this->hasGlobalSearch) ?? config('recently.global_search');
+    }
+
+    public function hasMenu(): bool
+    {
+        return $this->evaluate($this->hasMenu) ?? config('recently.menu');
     }
 
     public function isRounded(): bool
