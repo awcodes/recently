@@ -54,11 +54,11 @@ To record recent edits/views, include the trait on `EditRecord` or `ViewRecord` 
 
 **Recent Edits**:
 ```php
-use Awcodes\Recently\Traits\IsHistorical;
+use Awcodes\Recently\Concerns\HasRecentHistoryRecorder;
 
 class EditUser extends EditRecord
 {
-    use IsHistorical;
+    use HasRecentHistoryRecorder;
 
     protected static string $resource = UserResource::class;
 }
@@ -67,7 +67,7 @@ class EditUser extends EditRecord
 ```php
 class ViewUser extends ViewRecord
 {
-    use IsHistorical;
+    use HasRecentHistoryRecorder;
 
     protected static string $resource = UserResource::class;
 }
