@@ -34,7 +34,7 @@ content: [
 ```
 
 ## Usage
-The plugin adds a “Recently Viewed” functionality in your filament panel(s), letting users quickly access resources they’ve recently interacted with. It tracks visits to `EditRecord` and `ViewRecord` pages of resources where it’s enabled.
+The plugin adds a “Recently Viewed” functionality in your filament panel(s), letting users quickly access resources they’ve recently interacted with. It tracks views/visits to `EditRecord` and `ViewRecord` pages of resources where it’s enabled.
 
 ### Registering the plugin
 
@@ -76,18 +76,21 @@ class ViewUser extends ViewRecord
 ## Configuration
 You can enable/disable or customize the plugin's features either globally through the `config` file or per panel.
 
-### Global Search
-By default, the plugin will list the recent visits/views as part of the global search results. To disable this feature, set the `global_search` option to `false` from the config or by passing `false` to the `globalSearch()` method per panel.
-
 ```php
 // config/recently.php
 return [
-    ...
-    'global_search' => false,
-    ...
+    'user_model' => App\Models\User::class,
+    'max_items' => 20,
+    'width' => 'xs',
+    'global_search' => true,
+    'menu' => true,
+    'icon' => 'heroicon-o-arrow-uturn-left',
 ];
 ```
-Or **Per Panel**,
+
+### Global Search
+By default, the plugin will list the recent visits/views as part of the global search results. To disable this feature, set the `global_search` option to `false` from the config or by passing `false` to the `globalSearch()` method per panel.
+
 ```php
 use Awcodes\Recently\RecentlyPlugin;
 
@@ -104,15 +107,6 @@ public function panel(Panel $panel): Panel
 ### Menu
 By default, the plugin will list the recent visits/views as a dropdown menu in the topbar using the `PanelsRenderHook::USER_MENU_BEFORE` render hook. To disable this feature, set the `menu` option to `false` in the config or by passing `false` to the `menu()` method per panel.
 
-```php
-// config/recently.php
-return [
-    ...
-    'menu' => false,
-    ...
-];
-```
-Or **Per Panel**,
 ```php
 use Awcodes\Recently\RecentlyPlugin;
 
@@ -131,15 +125,6 @@ public function panel(Panel $panel): Panel
 ### Icon
 Set a custom `icon` for the **menu**.
 ```php
-// config/recently.php
-return [
-    ...
-    'icon' => 'heroicon-o-clock',
-    ...
-];
-```
-Or **Per Panel**,
-```php
 use Awcodes\Recently\RecentlyPlugin;
 
 public function panel(Panel $panel): Panel
@@ -153,7 +138,7 @@ public function panel(Panel $panel): Panel
 ```
 
 ### Rounded
-By default, the menu icon is round you can opt out of this by passing `false` to the `rounded()` method.
+The menu icon is round you can opt out of this by passing `false` to the `rounded()` method.
 ```php
 use Awcodes\Recently\RecentlyPlugin;
 
@@ -168,7 +153,7 @@ public function panel(Panel $panel): Panel
 ```
 
 ### Label
-By default, the menu has no label you can set a custom `label` by passing a string to the `label()` method.
+The menu has no label you can set a custom `label` by passing a string to the `label()` method.
 ```php
 use Awcodes\Recently\RecentlyPlugin;
 
@@ -184,15 +169,7 @@ public function panel(Panel $panel): Panel
 
 ### Width
 The dropdown menu uses the filament [dropdown blade component](https://filamentphp.com/docs/3.x/support/blade-components/dropdown#setting-the-width-of-a-dropdown), so you can use any of the options available, the default is `xs`.
-```php
-// config/recently.php
-return [
-    ...
-    'width' => 'xs',
-    ...
-];
-```
-Or **Per Panel**,
+
 ```php
 use Awcodes\Recently\RecentlyPlugin;
 
@@ -208,15 +185,7 @@ public function panel(Panel $panel): Panel
 
 ### Max Items
 Specify the maximum number of recently viewed items to display in the **menu**.
-```php
-// config/recently.php
-return [
-    ...
-    'max_items' => 5,
-    ...
-];
-```
-Or **Per Panel**,
+
 ```php
 use Awcodes\Recently\RecentlyPlugin;
 
@@ -231,7 +200,7 @@ public function panel(Panel $panel): Panel
 ```
 
 ### Render Hook
-By default, the plugin will render the menu using the `PanelsRenderHook::USER_MENU_BEFORE` hook. However, you can change this using the `renderUsingHook()` method by providing one of the other available filament [Render Hooks](https://filamentphp.com/docs/3.x/support/render-hooks).
+The plugin will render the menu using the `PanelsRenderHook::USER_MENU_BEFORE` hook. However, you can change this using the `renderUsingHook()` method by providing one of the other available filament [Render Hooks](https://filamentphp.com/docs/3.x/support/render-hooks).
 
 ```php
 use Awcodes\Recently\RecentlyPlugin;
