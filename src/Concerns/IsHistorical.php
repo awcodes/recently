@@ -10,20 +10,29 @@ trait IsHistorical
 {
     public function renderedIsHistorical(): void
     {
-        if (Str::contains(request()->fullUrl(), Filament::getCurrentPanel()->getPath())) {
-            $resource = static::getResource();
-            $record = $this->getRecord();
-            $title = $this->getTitle($record);
+        $panel = Filament::getCurrentPanel();
 
-            if (! $resource::getRecordTitleAttribute()) {
-                $title .= ' ' . $record->id;
-            }
+        match(true) {
+            Str::contains(request()->fullUrl(), $panel->getPath()) => $this->recordHistory(),
+            $panel->isDefault() && blank($panel->getPath()) => $this->recordHistory(),
+            default => null,
+        };
+    }
 
-            Recently::add(
-                url: request()->fullUrl(),
-                icon: $resource::getNavigationIcon(),
-                title: $title,
-            );
+    protected function recordHistory(): void
+    {
+        $resource = static::getResource();
+        $record = $this->getRecord();
+        $title = $this->getTitle($record);
+
+        if (! $resource::getRecordTitleAttribute()) {
+            $title .= ' ' . $record->id;
         }
+
+        Recently::add(
+            url: request()->fullUrl(),
+            icon: $resource::getNavigationIcon(),
+            title: $title,
+        );
     }
 }
