@@ -74,7 +74,7 @@ class ViewUser extends ViewRecord
 ```
 
 ## Configuration
-You can enable/disable or customize the plugin's features either globally through the `config/recently.php` or per panel.
+You can enable/disable or customize the plugin's features either globally through the `config` file or per panel.
 
 ### Global Search
 By default, the plugin will list the recent visits/views as part of the global search results. To disable this feature, set the `global_search` option to `false` from the config or by passing `false` to the `globalSearch()` method per panel.
@@ -162,7 +162,7 @@ public function panel(Panel $panel): Panel
     return $panel
         ->plugins([
             RecentlyPlugin::make()
-                ->rounded('heroicon-o-clock'),
+                ->rounded(condition: false),
         ]);
 }
 ```
