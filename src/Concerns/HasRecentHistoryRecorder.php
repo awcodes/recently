@@ -6,9 +6,9 @@ use Awcodes\Recently\Facades\Recently;
 use Filament\Facades\Filament;
 use Illuminate\Support\Str;
 
-trait IsHistorical
+trait HasRecentHistoryRecorder
 {
-    public function renderedIsHistorical(): void
+    public function renderedHasRecentHistoryRecorder(): void
     {
         $panel = Filament::getCurrentPanel();
 
