@@ -1,6 +1,6 @@
 {
     "name": "awcodes/recently",
-    "description": "This is my package recently",
+    "description": "Easily track and access recently viewed records in your filament panels.",
     "keywords": [
         "awcodes",
         "laravel",

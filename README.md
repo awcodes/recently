@@ -1,11 +1,9 @@
-# Filament Recently
+# Recently
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/awcodes/recently.svg?style=flat-square)](https://packagist.org/packages/awcodes/recently)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/awcodes/recently/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/awcodes/recently/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/awcodes/recently/fix-php-code-styling.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/awcodes/recently/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/awcodes/recently.svg?style=flat-square)](https://packagist.org/packages/awcodes/recently)
-
-
 
 Easily track and access recently viewed records in your filament panels.
 
@@ -22,14 +20,14 @@ php artisan recently:install
 ``` 
 In an effort to align with Filament's theming methodology you will need to use a custom theme to use this plugin.
 
-> **Note**
-> If you have not set up a custom theme and are using a Panel follow the instructions in the [Filament Docs](https://filamentphp.com/docs/3.x/panels/themes#creating-a-custom-theme) first.
+> [!IMPORTANT]
+> If you have not set up a custom theme and are using a Panel follow the instructions in the [Filament Docs](https://filamentphp.com/docs/3.x/panels/themes#creating-a-custom-theme) first. The following applies to both the Panels Package and the standalone Forms package.
 
 Add the plugin's views to your `tailwind.config.js` file.
 
 ```js
 content: [
-    '<path-to-vendor>/awcodes/recently/resources/**/*.blade.php',
+    './vendor/awcodes/recently/resources/**/*.blade.php',
 ]
 ```
 
@@ -153,7 +151,7 @@ public function panel(Panel $panel): Panel
 ```
 
 ### Label
-The menu has no label you can set a custom `label` by passing a string to the `label()` method.
+The menu has no label, but you can set a custom `label` by passing a string to the `label()` method.
 ```php
 use Awcodes\Recently\RecentlyPlugin;
 
