@@ -5,6 +5,8 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/awcodes/recently/fix-php-code-styling.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/awcodes/recently/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/awcodes/recently.svg?style=flat-square)](https://packagist.org/packages/awcodes/recently)
 
+<img src="https://res.cloudinary.com/aw-codes/image/upload/v1725456482/plugins/recently/awcodes-recently.jpg" alt="screenshots of palette in a filament panel" width="1200" height="auto" class="filament-hidden" style="width: 100%;" />
+
 Easily track and access recently viewed records in your filament panels.
 
 ## Installation
