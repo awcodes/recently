@@ -12,7 +12,7 @@ trait HasRecentHistoryRecorder
     {
         $panel = Filament::getCurrentPanel();
 
-        match(true) {
+        match (true) {
             Str::contains(request()->fullUrl(), $panel->getPath()) => $this->recordHistory(),
             $panel->isDefault() && blank($panel->getPath()) => $this->recordHistory(),
             default => null,
