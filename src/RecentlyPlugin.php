@@ -22,6 +22,8 @@ class RecentlyPlugin implements Plugin
 
     protected string | Closure | null $label = null;
 
+    protected string | Closure | null $tooltip = null;
+
     protected string | Closure | null $icon = null;
 
     protected string | Closure | null $width = null;
@@ -103,6 +105,13 @@ class RecentlyPlugin implements Plugin
         return $this;
     }
 
+    public function tooltip(string | Closure $tooltip): static
+    {
+        $this->tooltip = $tooltip;
+
+        return $this;
+    }
+
     public function maxItems(int | Closure $maxItems): static
     {
         $this->maxItems = $maxItems;
@@ -139,6 +148,11 @@ class RecentlyPlugin implements Plugin
     public function getLabel(): ?string
     {
         return $this->evaluate($this->label) ?? null;
+    }
+
+    public function getTooltip(): ?string
+    {
+        return $this->evaluate($this->tooltip) ?? null;
     }
 
     public function getMaxItems(): int
