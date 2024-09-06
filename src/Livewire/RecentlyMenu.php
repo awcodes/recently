@@ -16,6 +16,8 @@ class RecentlyMenu extends Component
 
     public ?string $label = null;
 
+    public ?string $tooltip = null;
+
     public ?string $icon = null;
 
     public ?string $width = null;
@@ -30,6 +32,7 @@ class RecentlyMenu extends Component
             ->get();
         $this->rounded = $plugin->isRounded();
         $this->label = $plugin->getLabel();
+        $this->tooltip = $plugin->gettooltip();
         $this->icon = $plugin->getIcon();
         $this->width = $plugin->getWidth();
     }
