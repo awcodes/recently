@@ -49,6 +49,22 @@ public function panel(Panel $panel): Panel
         ])
 }
 ```
+
+### Possible Conflicts
+
+If you are using `QuickCreatePlugin` or `OverlookPlugin` you will need to exclude the `RecentEntryResource` from them.
+
+```php
+OverlookPlugin::make()
+    ->excludes([
+        RecentEntryResource::class,
+    ]),
+QuickCreatePlugin::make()
+    ->excludes([
+        RecentEntryResource::class,
+    ]),
+```
+
 ### Tracking Recent
 To record recent edits/views, include the trait on `EditRecord` or `ViewRecord` pages of the resources you want to monitor:
 
