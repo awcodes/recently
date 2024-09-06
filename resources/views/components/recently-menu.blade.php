@@ -1,11 +1,17 @@
+@php
+    $hasTooltip = filled($tooltip);
+@endphp
 <div class="recently-menu">
     <x-filament::dropdown placement="bottom-end" :teleport="true" :width="$width">
         <x-slot name="trigger">
             <button
-                x-tooltip="{
-                    content: @js($tooltip),
-                    theme: $store.theme,
-                }"
+                @if ($hasTooltip)
+                    x-tooltip="{
+                        content: @js($tooltip),
+                        theme: $store.theme,
+                    }"
+                @endif
+
                 @class([
                     'flex flex-shrink-0 bg-gray-100 items-center justify-center text-primary-500 hover:text-primary-900 dark:bg-gray-800 hover:bg-primary-500 dark:hover:bg-primary-500',
                     'rounded-full' => $rounded,
