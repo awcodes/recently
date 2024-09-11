@@ -32,7 +32,7 @@ trait HasRecentHistoryRecorder
         Recently::add(
             url: request()->fullUrl(),
             icon: $resource::getNavigationIcon(),
-            title: $title,
+            title: strip_tags($title),
         );
     }
 }
