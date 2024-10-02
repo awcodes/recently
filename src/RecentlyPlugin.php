@@ -8,6 +8,7 @@ use Closure;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 use Filament\Support\Concerns\EvaluatesClosures;
+use Filament\Support\Enums\MaxWidth;
 use Filament\View\PanelsRenderHook;
 use Illuminate\Support\Facades\Blade;
 use Livewire\Livewire;
@@ -26,7 +27,7 @@ class RecentlyPlugin implements Plugin
 
     protected string | Closure | null $icon = null;
 
-    protected string | Closure | null $width = null;
+    protected MaxWidth | string | Closure | null $width = null;
 
     protected int | Closure | null $maxItems = null;
 
@@ -119,7 +120,7 @@ class RecentlyPlugin implements Plugin
         return $this;
     }
 
-    public function width(string | Closure $width): static
+    public function width(MaxWidth | string | Closure $width): static
     {
         $this->width = $width;
 
@@ -160,7 +161,7 @@ class RecentlyPlugin implements Plugin
         return $this->evaluate($this->maxItems) ?? config('recently.max_items');
     }
 
-    public function getWidth(): string
+    public function getWidth(): MaxWidth | string
     {
         return $this->evaluate($this->width) ?? config('recently.width');
     }
