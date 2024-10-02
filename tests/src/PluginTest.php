@@ -5,8 +5,9 @@ use Awcodes\Recently\RecentlyPlugin;
 use Awcodes\Recently\Resources\RecentEntryResource;
 use Awcodes\Recently\Tests\Models\User;
 use Filament\Facades\Filament;
+    use Filament\Support\Enums\MaxWidth;
 
-it('registers plugin', function () {
+    it('registers plugin', function () {
     $panel = Filament::getCurrentPanel();
 
     $panel->plugins([
@@ -56,6 +57,8 @@ it('can modify width', function ($width) {
 })->with([
     'sm',
     fn () => 'xl',
+    MaxWidth::ExtraSmall,
+    fn () => MaxWidth::FourExtraLarge,
 ]);
 
 it('can modify max items', function ($items) {
