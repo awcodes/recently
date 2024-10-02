@@ -4,6 +4,7 @@ namespace Awcodes\Recently\Livewire;
 
 use Awcodes\Recently\Models\RecentEntry;
 use Awcodes\Recently\RecentlyPlugin;
+use Filament\Support\Enums\MaxWidth;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
@@ -20,7 +21,7 @@ class RecentlyMenu extends Component
 
     public ?string $icon = null;
 
-    public ?string $width = null;
+    public MaxWidth | null | string $width = null;
 
     public function mount(): void
     {
