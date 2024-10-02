@@ -14,6 +14,11 @@ class RecentEntry extends Model
 {
     use HasFactory;
 
+    public function __construct() {
+        parent::__construct();
+        $this->table = config('recently.table_name', 'recent_entries');
+    }
+
     protected $fillable = [
         'user_id',
         'url',
