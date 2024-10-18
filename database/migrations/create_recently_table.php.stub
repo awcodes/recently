@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('recent_entries', function (Blueprint $table) {
+        Schema::create(config('recently.table_name', 'recent_entries'), function (Blueprint $table) {
             $table->id();
 
             $table->foreignIdFor(config('recently.user_model'));
