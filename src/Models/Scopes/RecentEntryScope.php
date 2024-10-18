@@ -14,6 +14,8 @@ class RecentEntryScope implements Scope
      */
     public function apply(Builder $builder, Model $model): void
     {
-        $builder->where('user_id', Filament::auth()->user()->getAuthIdentifier());
+        if (Filament::auth()->check()) {
+            $builder->where('user_id', Filament::auth()->user()->getAuthIdentifier());
+        }
     }
 }
