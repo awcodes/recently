@@ -7,19 +7,24 @@ use Awcodes\Recently\RecentlyPlugin;
 use Filament\Support\Enums\MaxWidth;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
+use Livewire\Attributes\Computed;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class RecentlyMenu extends Component
 {
+    #[Computed]
     public ?Collection $records = null;
 
-    public ?bool $rounded = null;
+    public ?string $icon = null;
 
     public ?string $label = null;
 
-    public ?string $tooltip = null;
+    public ?int $maxItems = null;
 
-    public ?string $icon = null;
+    public ?bool $rounded = null;
+
+    public ?string $tooltip = null;
 
     public MaxWidth | null | string $width = null;
 
@@ -27,15 +32,23 @@ class RecentlyMenu extends Component
     {
         $plugin = RecentlyPlugin::get();
 
-        $this->records = RecentEntry::query()
-            ->orderByDesc('updated_at')
-            ->limit($plugin->getMaxItems())
-            ->get();
         $this->rounded = $plugin->isRounded();
         $this->label = $plugin->getLabel();
         $this->tooltip = $plugin->gettooltip();
         $this->icon = $plugin->getIcon();
         $this->width = $plugin->getWidth();
+        $this->maxItems = $plugin->getMaxItems();
+
+        $this->getRecords();
+    }
+
+    #[On('livewire:navigated')]
+    public function getRecords(): void
+    {
+        $this->records = RecentEntry::query()
+            ->orderByDesc('updated_at')
+            ->limit($this->maxItems)
+            ->get();
     }
 
     public function clearRecords(): void
