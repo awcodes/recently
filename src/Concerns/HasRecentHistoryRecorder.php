@@ -5,6 +5,7 @@ namespace Awcodes\Recently\Concerns;
 use Awcodes\Recently\Facades\Recently;
 use Filament\Facades\Filament;
 use Illuminate\Support\Str;
+use Livewire\LivewireManager;
 
 trait HasRecentHistoryRecorder
 {
@@ -12,8 +13,12 @@ trait HasRecentHistoryRecorder
     {
         $panel = Filament::getCurrentPanel();
 
+        if ($this->isLivewireRequest()) {
+            return;
+        }
+
         match (true) {
-            Str::contains(request()->fullUrl(), $panel->getPath()) => $this->recordHistory(),
+            Str::contains(request()->url(), $panel->getPath()) => $this->recordHistory(),
             $panel->isDefault() && blank($panel->getPath()) => $this->recordHistory(),
             default => null,
         };
@@ -30,9 +35,14 @@ trait HasRecentHistoryRecorder
         }
 
         Recently::add(
-            url: request()->fullUrl(),
+            url: request()->url(),
             icon: $resource::getNavigationIcon(),
             title: strip_tags($title),
         );
+    }
+
+    protected function isLivewireRequest(): bool
+    {
+        return class_exists(LivewireManager::class) && app(LivewireManager::class)->isLivewireRequest();
     }
 }
