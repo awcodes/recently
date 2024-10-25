@@ -35,7 +35,7 @@
             <x-filament::dropdown.list>
             @foreach($records as $record)
                 <x-filament::dropdown.list.item
-                    :icon="$record['icon']"
+                    :icon="filled($record['icon']) ? $record['icon'] : $icon"
                     :href="$record['url']"
                     tag="a"
                 >

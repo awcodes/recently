@@ -7,7 +7,7 @@ use Filament\Facades\Filament;
 
 class Recently
 {
-    public function add(string $url, string $icon, string $title): void
+    public function add(string $url, ?string $icon, string $title): void
     {
         RecentEntry::updateOrCreate([
             'user_id' => Filament::auth()->user()->getAuthIdentifier(),
@@ -15,7 +15,7 @@ class Recently
         ], [
             'user_id' => Filament::auth()->user()->getAuthIdentifier(),
             'url' => $url,
-            'icon' => $icon,
+            'icon' => $icon ?? '',
             'title' => $title,
         ]);
     }
