@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Awcodes\Recently\Livewire;
 
 use Awcodes\Recently\Models\RecentEntry;
 use Awcodes\Recently\RecentlyPlugin;
-use Filament\Support\Enums\MaxWidth;
+use Filament\Support\Enums\Width;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Attributes\Computed;
@@ -26,7 +28,7 @@ class RecentlyMenu extends Component
 
     public ?string $tooltip = null;
 
-    public MaxWidth | null | string $width = null;
+    public Width|null|string $width = null;
 
     public function mount(): void
     {

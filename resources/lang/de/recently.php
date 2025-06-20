@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 // translations for Awcodes/Recently
 return [
     'trigger_label' => 'Letzte Datensätze',

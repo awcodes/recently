@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 use Awcodes\Recently\Livewire\RecentlyMenu;
 use Awcodes\Recently\Models\RecentEntry;
 use Awcodes\Recently\RecentlyPlugin;
 use Awcodes\Recently\Tests\Models\Page;
 use Awcodes\Recently\Tests\Models\User;
-use Awcodes\Recently\Tests\Resources\PageResource;
+use Awcodes\Recently\Tests\Resources\Pages\PageResource;
 use Filament\Facades\Filament;
 
 use function Pest\Livewire\livewire;
@@ -13,7 +15,7 @@ use function Pest\Livewire\livewire;
 beforeEach(function () {
     $this->user = $this->actingAs(User::factory()->create());
 
-    $this->panel = Filament::getCurrentPanel();
+    $this->panel = Filament::getCurrentOrDefaultPanel();
 
     $this->panel->plugins([
         RecentlyPlugin::make(),

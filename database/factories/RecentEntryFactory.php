@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Awcodes\Recently\Database\Factories;
 
 use Awcodes\Recently\Models\RecentEntry;

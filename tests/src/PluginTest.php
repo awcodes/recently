@@ -1,14 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 use Awcodes\Recently\Livewire\RecentlyMenu;
 use Awcodes\Recently\RecentlyPlugin;
 use Awcodes\Recently\Resources\RecentEntryResource;
 use Awcodes\Recently\Tests\Models\User;
 use Filament\Facades\Filament;
-use Filament\Support\Enums\MaxWidth;
+use Filament\Support\Enums\Width;
 
 it('registers plugin', function () {
-    $panel = Filament::getCurrentPanel();
+    $panel = Filament::getCurrentOrDefaultPanel();
 
     $panel->plugins([
         RecentlyPlugin::make(),
@@ -57,8 +59,8 @@ it('can modify width', function ($width) {
 })->with([
     'sm',
     fn () => 'xl',
-    MaxWidth::ExtraSmall,
-    fn () => MaxWidth::FourExtraLarge,
+    Width::ExtraSmall,
+    fn () => Width::FourExtraLarge,
 ]);
 
 it('can modify max items', function ($items) {
@@ -72,7 +74,7 @@ it('can modify max items', function ($items) {
 ]);
 
 it('can has global search', function () {
-    $panel = Filament::getCurrentPanel();
+    $panel = Filament::getCurrentOrDefaultPanel();
 
     $panel->plugins([
         RecentlyPlugin::make(),
@@ -86,7 +88,7 @@ it('can has global search', function () {
 });
 
 it('can disable global search', function ($condition) {
-    $panel = Filament::getCurrentPanel();
+    $panel = Filament::getCurrentOrDefaultPanel();
 
     $panel->plugins([
         RecentlyPlugin::make()
@@ -106,7 +108,7 @@ it('can disable global search', function ($condition) {
 it('has menu', function () {
     $this->actingAs(User::factory()->create());
 
-    $panel = Filament::getCurrentPanel();
+    $panel = Filament::getCurrentOrDefaultPanel();
 
     $panel->plugins([
         RecentlyPlugin::make(),
@@ -124,7 +126,7 @@ it('has menu', function () {
 it('has hides menu', function ($condition) {
     $this->actingAs(User::factory()->create());
 
-    $panel = Filament::getCurrentPanel();
+    $panel = Filament::getCurrentOrDefaultPanel();
 
     $panel->plugins([
         RecentlyPlugin::make()

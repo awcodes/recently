@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 // config for Awcodes/Recently
 return [
     'user_model' => App\Models\User::class,

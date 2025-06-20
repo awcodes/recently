@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Awcodes\Recently\Tests;
 
-use Awcodes\Recently\Tests\Resources\PageResource;
+use Awcodes\Recently\Tests\Resources\Pages\PageResource;
 use Exception;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -20,9 +22,7 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class AdminPanelProvider extends PanelProvider
 {
-    /**
-     * @throws Exception
-     */
+    /** @throws Exception */
     public function panel(Panel $panel): Panel
     {
         return $panel

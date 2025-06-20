@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Awcodes\Recently\Tests;
 
 use Awcodes\Recently\RecentlyServiceProvider;
@@ -10,6 +12,7 @@ use Filament\FilamentServiceProvider;
 use Filament\Forms\FormsServiceProvider;
 use Filament\Infolists\InfolistsServiceProvider;
 use Filament\Notifications\NotificationsServiceProvider;
+use Filament\Schemas\SchemasServiceProvider;
 use Filament\Support\SupportServiceProvider;
 use Filament\Tables\TablesServiceProvider;
 use Filament\Widgets\WidgetsServiceProvider;
@@ -24,9 +27,14 @@ class TestCase extends BaseTestCase
     use LazilyRefreshDatabase;
     use WithWorkbench;
 
+    public function getEnvironmentSetUp($app): void
+    {
+        $app['config']->set('database.default', 'testing');
+    }
+
     protected function getPackageProviders($app): array
     {
-        return [
+        $providers = [
             ActionsServiceProvider::class,
             BladeCaptureDirectiveServiceProvider::class,
             BladeHeroiconsServiceProvider::class,
@@ -36,26 +44,21 @@ class TestCase extends BaseTestCase
             InfolistsServiceProvider::class,
             LivewireServiceProvider::class,
             NotificationsServiceProvider::class,
+            SchemasServiceProvider::class,
             SupportServiceProvider::class,
             TablesServiceProvider::class,
             WidgetsServiceProvider::class,
             RecentlyServiceProvider::class,
             AdminPanelProvider::class,
         ];
+
+        sort($providers);
+
+        return $providers;
     }
 
     protected function defineDatabaseMigrations(): void
     {
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
-    }
-
-    public function getEnvironmentSetUp($app): void
-    {
-        $app['config']->set('database.default', 'testing');
-
-        $app['config']->set('view.paths', [
-            ...$app['config']->get('view.paths'),
-            __DIR__ . '/../resources/views',
-        ]);
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 }

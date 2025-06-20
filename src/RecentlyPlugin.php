@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Awcodes\Recently;
 
 use Awcodes\Recently\Livewire\RecentlyMenu;
@@ -8,7 +10,7 @@ use Closure;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 use Filament\Support\Concerns\EvaluatesClosures;
-use Filament\Support\Enums\MaxWidth;
+use Filament\Support\Enums\Width;
 use Filament\View\PanelsRenderHook;
 use Illuminate\Support\Facades\Blade;
 use Livewire\Livewire;
@@ -17,23 +19,36 @@ class RecentlyPlugin implements Plugin
 {
     use EvaluatesClosures;
 
-    protected string | Closure | null $renderUsingHook = null;
+    protected string|Closure|null $renderUsingHook = null;
 
-    protected bool | Closure | null $rounded = null;
+    protected bool|Closure|null $rounded = null;
 
-    protected string | Closure | null $label = null;
+    protected string|Closure|null $label = null;
 
-    protected string | Closure | null $tooltip = null;
+    protected string|Closure|null $tooltip = null;
 
-    protected string | Closure | null $icon = null;
+    protected string|Closure|null $icon = null;
 
-    protected MaxWidth | string | Closure | null $width = null;
+    protected Width|string|Closure|null $width = null;
 
-    protected int | Closure | null $maxItems = null;
+    protected int|Closure|null $maxItems = null;
 
-    protected bool | Closure | null $hasGlobalSearch = null;
+    protected bool|Closure|null $hasGlobalSearch = null;
 
-    protected bool | Closure | null $hasMenu = null;
+    protected bool|Closure|null $hasMenu = null;
+
+    public static function make(): static
+    {
+        return app(static::class);
+    }
+
+    public static function get(): static
+    {
+        /** @var static $plugin */
+        $plugin = filament(app(static::class)->getId());
+
+        return $plugin;
+    }
 
     public function getId(): string
     {
@@ -65,76 +80,63 @@ class RecentlyPlugin implements Plugin
         //
     }
 
-    public static function make(): static
-    {
-        return app(static::class);
-    }
-
-    public static function get(): static
-    {
-        /** @var static $plugin */
-        $plugin = filament(app(static::class)->getId());
-
-        return $plugin;
-    }
-
-    public function globalSearch(bool | Closure $condition = true): static
+    public function globalSearch(bool|Closure $condition = true): static
     {
         $this->hasGlobalSearch = $condition;
 
         return $this;
     }
 
-    public function menu(bool | Closure $condition = true): static
+    public function menu(bool|Closure $condition = true): static
     {
         $this->hasMenu = $condition;
 
         return $this;
     }
 
-    public function icon(string | Closure $icon): static
+    public function icon(string|Closure $icon): static
     {
         $this->icon = $icon;
 
         return $this;
     }
 
-    public function label(string | Closure $label): static
+    public function label(string|Closure $label): static
     {
         $this->label = $label;
 
         return $this;
     }
 
-    public function tooltip(string | Closure $tooltip): static
+    public function tooltip(string|Closure $tooltip): static
     {
         $this->tooltip = $tooltip;
 
         return $this;
     }
 
-    public function maxItems(int | Closure $maxItems): static
+    public function maxItems(int|Closure $maxItems): static
     {
         $this->maxItems = $maxItems;
 
         return $this;
     }
 
-    public function width(MaxWidth | string | Closure $width): static
+    public function width(Width|string|Closure $width): static
     {
         $this->width = $width;
 
         return $this;
     }
 
-    public function renderUsingHook(string | Closure $panelHook): static
+    public function renderUsingHook(string|Closure $panelHook): static
     {
         $this->renderUsingHook = $panelHook;
 
         return $this;
     }
 
-    public function rounded(bool | Closure $condition = true): static
+    public function rounded(bool|Closure $condition = true): static
     {
         $this->rounded = $condition;
 
@@ -161,7 +163,7 @@ class RecentlyPlugin implements Plugin
         return $this->evaluate($this->maxItems) ?? config('recently.max_items');
     }
 
-    public function getWidth(): MaxWidth | string
+    public function getWidth(): Width|string
     {
         return $this->evaluate($this->width) ?? config('recently.width');
     }

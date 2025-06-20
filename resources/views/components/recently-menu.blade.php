@@ -1,4 +1,6 @@
 @php
+    use function Filament\Support\generate_icon_html;
+
     $hasTooltip = filled($tooltip);
 @endphp
 <div class="recently-menu">

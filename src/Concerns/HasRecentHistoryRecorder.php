@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Awcodes\Recently\Concerns;
 
 use Awcodes\Recently\Facades\Recently;
@@ -31,13 +33,13 @@ trait HasRecentHistoryRecorder
         $title = $this->getTitle($record);
 
         if (! $resource::getRecordTitleAttribute()) {
-            $title .= ' ' . $record->id;
+            $title .= ' '.$record->id;
         }
 
         Recently::add(
             url: request()->url(),
             icon: $resource::getNavigationIcon(),
-            title: strip_tags($title),
+            title: strip_tags((string) $title),
         );
     }
 

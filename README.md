@@ -1,13 +1,20 @@
-# Recently
+<img src="https://res.cloudinary.com/aw-codes/image/upload/v1725456482/plugins/recently/awcodes-recently.jpg" alt="screenshots of palette in a filament panel" width="1200" height="auto" class="filament-hidden" style="width: 100%;" />
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/awcodes/recently.svg?style=flat-square)](https://packagist.org/packages/awcodes/recently)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/awcodes/recently/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/awcodes/recently/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/awcodes/recently/fix-php-code-styling.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/awcodes/recently/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/awcodes/recently.svg?style=flat-square)](https://packagist.org/packages/awcodes/recently)
 
-<img src="https://res.cloudinary.com/aw-codes/image/upload/v1725456482/plugins/recently/awcodes-recently.jpg" alt="screenshots of palette in a filament panel" width="1200" height="auto" class="filament-hidden" style="width: 100%;" />
+# Recently
 
 Easily track and access recently viewed records in your filament panels.
+
+## Compatibility
+
+| Package Version | Filament Version |
+|-----------------|------------------|
+| 1.x             | 3.x              |
+| 2.x             | 4.x              |
 
 ## Installation
 
@@ -20,17 +27,14 @@ composer require awcodes/recently
 ```bash
 php artisan recently:install
 ``` 
-In an effort to align with Filament's theming methodology you will need to use a custom theme to use this plugin.
 
 > [!IMPORTANT]
-> If you have not set up a custom theme and are using a Panel follow the instructions in the [Filament Docs](https://filamentphp.com/docs/3.x/panels/themes#creating-a-custom-theme) first. The following applies to both the Panels Package and the standalone Forms package.
+> If you have not set up a custom theme and are using Filament Panels follow the instructions in the [Filament Docs](https://filamentphp.com/docs/4.x/styling/overview#creating-a-custom-theme) first.
 
-Add the plugin's views to your `tailwind.config.js` file.
+After setting up a custom theme add the plugin's views to your theme css file or your app's css file if using the standalone packages.
 
-```js
-content: [
-    './vendor/awcodes/recently/resources/**/*.blade.php',
-]
+```css
+@source '../../../../vendor/awcodes/recently/resources/**/*.blade.php';
 ```
 
 ## Usage
@@ -237,10 +241,6 @@ public function panel(Panel $panel): Panel
 composer test
 ```
 
-## Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
 ## Contributing
 
 If you want to contribute to this plugin, you may want to test it in a real Filament project:
@@ -270,7 +270,7 @@ Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+Please review [our security policy](.github/SECURITY.md) on how to report security vulnerabilities.
 
 ## Credits
 

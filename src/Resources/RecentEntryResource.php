@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Awcodes\Recently\Resources;
 
 use Awcodes\Recently\Models\RecentEntry;

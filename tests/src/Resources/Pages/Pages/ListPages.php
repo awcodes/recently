@@ -1,8 +1,10 @@
 <?php
 
-namespace Awcodes\Recently\Tests\Resources\PageResource\Pages;
+declare(strict_types=1);
 
-use Awcodes\Recently\Tests\Resources\PageResource;
+namespace Awcodes\Recently\Tests\Resources\Pages\Pages;
+
+use Awcodes\Recently\Tests\Resources\Pages\PageResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
