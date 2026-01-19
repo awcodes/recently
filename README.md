@@ -15,6 +15,7 @@ Easily track and access recently viewed records in your filament panels.
 |-----------------|------------------|
 | 1.x             | 3.x              |
 | 2.x             | 4.x              |
+| 3.x             | 5.x              |
 
 ## Installation
 
