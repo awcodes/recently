@@ -13,7 +13,7 @@ trait HasRecentHistoryRecorder
 {
     public function renderedHasRecentHistoryRecorder(): void
     {
-        $panel = Filament::getCurrentPanel();
+        $panel = Filament::getCurrentOrDefaultPanel();
 
         if ($this->isLivewireRequest()) {
             return;
