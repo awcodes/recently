@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 // config for Awcodes/Recently
 return [
+    'model' => Awcodes\Recently\Models\RecentEntry::class,
     'user_model' => App\Models\User::class,
     'max_items' => 20,
     'width' => 'xs',
