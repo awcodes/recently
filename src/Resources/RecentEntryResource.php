@@ -4,18 +4,22 @@ declare(strict_types=1);
 
 namespace Awcodes\Recently\Resources;
 
-use Awcodes\Recently\Models\RecentEntry;
 use Awcodes\Recently\RecentlyPlugin;
 use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Model;
 
 class RecentEntryResource extends Resource
 {
-    protected static ?string $model = RecentEntry::class;
+    protected static ?string $model = null;
 
     protected static ?string $recordTitleAttribute = 'title';
 
     protected static bool $shouldRegisterNavigation = false;
+
+    public static function getModel(): string
+    {
+        return config('recently.model');
+    }
 
     public static function getGlobalSearchResultUrl(Model $record): ?string
     {

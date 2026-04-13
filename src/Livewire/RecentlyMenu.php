@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Awcodes\Recently\Livewire;
 
-use Awcodes\Recently\Models\RecentEntry;
 use Awcodes\Recently\RecentlyPlugin;
 use Filament\Support\Enums\Width;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -47,7 +47,10 @@ class RecentlyMenu extends Component
     #[On('livewire:navigated')]
     public function getRecords(): void
     {
-        $this->records = RecentEntry::query()
+        /** @var class-string<Model> $model */
+        $model = config('recently.model');
+
+        $this->records = $model::query()
             ->orderByDesc('updated_at')
             ->limit($this->maxItems)
             ->get();
@@ -55,7 +58,10 @@ class RecentlyMenu extends Component
 
     public function clearRecords(): void
     {
-        RecentEntry::query()->delete();
+        /** @var class-string<Model> $model */
+        $model = config('recently.model');
+
+        $model::query()->delete();
         $this->records = null;
     }
 
