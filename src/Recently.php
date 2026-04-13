@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Awcodes\Recently;
 
-use Awcodes\Recently\Models\RecentEntry;
 use BackedEnum;
 use Filament\Facades\Filament;
 use Filament\Support\Icons\Heroicon;
+use Illuminate\Database\Eloquent\Model;
 
 class Recently
 {
@@ -17,7 +17,10 @@ class Recently
             $icon = "heroicon-$icon->value";
         }
 
-        RecentEntry::updateOrCreate([
+        /** @var class-string<Model> $model */
+        $model = config('recently.model');
+
+        $model::updateOrCreate([
             'user_id' => Filament::auth()->user()->getAuthIdentifier(),
             'url' => $url,
         ], [

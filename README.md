@@ -1,13 +1,11 @@
-<img src="https://res.cloudinary.com/aw-codes/image/upload/v1725456482/plugins/recently/awcodes-recently.jpg" alt="screenshots of palette in a filament panel" width="1200" height="auto" class="filament-hidden" style="width: 100%;" />
-
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/awcodes/recently.svg?style=flat-square)](https://packagist.org/packages/awcodes/recently)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/awcodes/recently/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/awcodes/recently/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/awcodes/recently/fix-php-code-styling.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/awcodes/recently/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/awcodes/recently.svg?style=flat-square)](https://packagist.org/packages/awcodes/recently)
-
 # Recently
 
 Easily track and access recently viewed records in your filament panels.
+
+[![Latest Version](https://img.shields.io/github/release/awcodes/recently.svg?style=flat-square&color=blue&label=Release)](https://github.com/awcodes/recently/releases)
+[![MIT Licensed](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE.md)
+[![Total Downloads](https://img.shields.io/packagist/dt/awcodes/recently.svg?style=flat-square&color=blue&label=Downloads)](https://packagist.org/packages/awcodes/recently)
+[![GitHub Repo stars](https://img.shields.io/github/stars/awcodes/recently?style=flat-square&color=blue&label=Stars)](https://github.com/awcodes/recently/stargazers)
 
 ## Compatibility
 
@@ -15,6 +13,7 @@ Easily track and access recently viewed records in your filament panels.
 |-----------------|------------------|
 | 1.x             | 3.x              |
 | 2.x             | 4.x              |
+| 3.x             | 5.x              |
 
 ## Installation
 

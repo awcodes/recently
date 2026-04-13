@@ -10,5 +10,4 @@ docs
 node_modules
 phpunit.xml
 phpstan.neon
-testbench.yaml
 vendor
