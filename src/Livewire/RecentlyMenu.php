@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Awcodes\Recently\Livewire;
 
 use Awcodes\Recently\RecentlyPlugin;
-use Illuminate\Database\Eloquent\Model;
 use Filament\Support\Enums\Width;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\On;
 use Livewire\Component;

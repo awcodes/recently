@@ -12,14 +12,14 @@ class RecentEntryResource extends Resource
 {
     protected static ?string $model = null;
 
+    protected static ?string $recordTitleAttribute = 'title';
+
+    protected static bool $shouldRegisterNavigation = false;
+
     public static function getModel(): string
     {
         return config('recently.model');
     }
-
-    protected static ?string $recordTitleAttribute = 'title';
-
-    protected static bool $shouldRegisterNavigation = false;
 
     public static function getGlobalSearchResultUrl(Model $record): ?string
     {
