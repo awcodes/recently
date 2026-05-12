@@ -15,6 +15,8 @@ Easily track and access recently viewed records in your filament panels.
 | 2.x             | 4.x              |
 | 3.x             | 5.x              |
 
+<!-- [docs_start] -->
+
 ## Installation
 
 You can install the package via composer then run the installation command and follow the prompts:
@@ -233,6 +235,8 @@ public function panel(Panel $panel): Panel
         ]);
 }
 ```
+
+<!-- [docs_end] -->
 
 ## Testing
 
