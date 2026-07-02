@@ -6,6 +6,7 @@ namespace Awcodes\Recently\Resources;
 
 use Awcodes\Recently\RecentlyPlugin;
 use Filament\Resources\Resource;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class RecentEntryResource extends Resource
@@ -19,6 +20,11 @@ class RecentEntryResource extends Resource
     public static function getModel(): string
     {
         return config('recently.model');
+    }
+
+    public static function getGlobalSearchEloquentQuery(): Builder
+    {
+        return parent::getGlobalSearchEloquentQuery()->existing();
     }
 
     public static function getGlobalSearchResultUrl(Model $record): ?string
