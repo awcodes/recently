@@ -12,7 +12,7 @@ Easily track and access recently viewed records in your filament panels.
 | Package Version | Filament Version |
 |-----------------|------------------|
 | 1.x             | 3.x              |
-| 2.x             | 4.x              |
+| 2.x             | 5.x              |
 | 3.x             | 4.x & 5.x        |
 
 <!-- [docs_start] -->
