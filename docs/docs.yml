@@ -1,0 +1,10 @@
+version: 1
+
+title: Recently
+
+navigation:
+  - index
+  - installation
+  - usage
+  - configuration
+  - appearance
