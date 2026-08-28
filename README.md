@@ -100,6 +100,7 @@ You can enable/disable or customize the plugin's features either globally throug
 ```php
 // config/recently.php
 return [
+    'model' => Awcodes\Recently\Models\RecentEntry::class,
     'user_model' => App\Models\User::class,
     'max_items' => 20,
     'width' => 'xs',
@@ -225,13 +226,14 @@ The plugin will render the menu using the `PanelsRenderHook::USER_MENU_BEFORE` h
 
 ```php
 use Awcodes\Recently\RecentlyPlugin;
+use Filament\View\PanelsRenderHook;
 
 public function panel(Panel $panel): Panel
 {
     return $panel
         ->plugins([
             RecentlyPlugin::make()
-                ->renderUsingHook('PanelsRenderHook::USER_MENU_AFTER'),
+                ->renderUsingHook(PanelsRenderHook::USER_MENU_AFTER),
         ]);
 }
 ```
