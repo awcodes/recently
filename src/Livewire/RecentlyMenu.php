@@ -51,6 +51,7 @@ class RecentlyMenu extends Component
         $model = config('recently.model');
 
         $this->records = $model::query()
+            ->existing()
             ->orderByDesc('updated_at')
             ->limit($this->maxItems)
             ->get();

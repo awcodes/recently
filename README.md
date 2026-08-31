@@ -30,6 +30,13 @@ php artisan recently:install
 ``` 
 
 > [!IMPORTANT]
+> **Upgrading an existing installation?** Publish and run the new migration so recent entries can reference their record (this powers automatic filtering of deleted records):
+> ```bash
+> php artisan vendor:publish --tag="recently-migrations"
+> php artisan migrate
+> ```
+
+> [!IMPORTANT]
 > If you have not set up a custom theme and are using Filament Panels follow the instructions in the [Filament Docs](https://filamentphp.com/docs/4.x/styling/overview#creating-a-custom-theme) first.
 
 After setting up a custom theme add the plugin's views to your theme css file or your app's css file if using the standalone packages.
@@ -93,6 +100,10 @@ class ViewUser extends ViewRecord
     protected static string $resource = UserResource::class;
 }
 ```
+
+### Deleted Records
+
+Recent entries are automatically hidden from the menu and global search once the record they point to no longer exists — including soft-deleted records — so users never follow a stale link to a "Record not found" page. Each entry stores a polymorphic `recordable` reference to its record, and only entries whose record still resolves are displayed. Entries recorded for pages without an underlying record are always kept.
 
 ## Configuration
 You can enable/disable or customize the plugin's features either globally through the `config` file or per panel.

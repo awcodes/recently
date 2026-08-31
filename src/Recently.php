@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recently
 {
-    public function add(string $url, string|BackedEnum|null $icon, string $title): void
+    public function add(string $url, string|BackedEnum|null $icon, string $title, ?Model $record = null): void
     {
         if ($icon instanceof Heroicon) {
             $icon = "heroicon-$icon->value";
@@ -28,6 +28,8 @@ class Recently
             'url' => $url,
             'icon' => $icon ?? '',
             'title' => $title,
+            'recordable_type' => $record?->getMorphClass(),
+            'recordable_id' => $record?->getKey(),
         ]);
     }
 }

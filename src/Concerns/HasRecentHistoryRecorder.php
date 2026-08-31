@@ -40,6 +40,7 @@ trait HasRecentHistoryRecorder
             url: request()->url(),
             icon: $resource::getNavigationIcon(),
             title: strip_tags((string) $title),
+            record: $record,
         );
     }
 
