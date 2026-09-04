@@ -5,8 +5,8 @@ declare(strict_types=1);
 use Awcodes\Recently\Livewire\RecentlyMenu;
 use Awcodes\Recently\Models\RecentEntry;
 use Awcodes\Recently\RecentlyPlugin;
-use Awcodes\Recently\Tests\Models\User;
 use Filament\Facades\Filament;
+use Workbench\App\Models\User;
 
 use function Pest\Livewire\livewire;
 

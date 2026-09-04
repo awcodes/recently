@@ -5,9 +5,9 @@ declare(strict_types=1);
 use Awcodes\Recently\Livewire\RecentlyMenu;
 use Awcodes\Recently\RecentlyPlugin;
 use Awcodes\Recently\Resources\RecentEntryResource;
-use Awcodes\Recently\Tests\Models\User;
 use Filament\Facades\Filament;
 use Filament\Support\Enums\Width;
+use Workbench\App\Models\User;
 
 it('registers plugin', function () {
     $panel = Filament::getCurrentOrDefaultPanel();

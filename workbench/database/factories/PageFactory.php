@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Awcodes\Recently\Tests\Database\Factories;
+namespace Workbench\Database\Factories;
 
-use Awcodes\Recently\Tests\Models\Page;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Workbench\App\Models\Page;
 
 class PageFactory extends Factory
 {

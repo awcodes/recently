@@ -5,10 +5,10 @@ declare(strict_types=1);
 use Awcodes\Recently\Livewire\RecentlyMenu;
 use Awcodes\Recently\Models\RecentEntry;
 use Awcodes\Recently\RecentlyPlugin;
-use Awcodes\Recently\Tests\Models\Page;
-use Awcodes\Recently\Tests\Models\User;
-use Awcodes\Recently\Tests\Resources\Pages\PageResource;
 use Filament\Facades\Filament;
+use Workbench\App\Filament\Resources\Pages\PageResource;
+use Workbench\App\Models\Page;
+use Workbench\App\Models\User;
 
 use function Pest\Livewire\livewire;
 

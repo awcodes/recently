@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Awcodes\Recently\Tests\Resources\Pages\Tables;
+namespace Workbench\App\Filament\Resources\Pages\Tables;
 
 use Exception;
 use Filament\Actions\BulkActionGroup;

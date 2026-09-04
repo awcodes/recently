@@ -13,7 +13,7 @@ return new class extends Migration
         Schema::create('recent_entries', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignIdFor(Awcodes\Recently\Tests\Models\User::class);
+            $table->foreignIdFor(Workbench\App\Models\User::class);
             $table->text('url');
             $table->string('icon');
             $table->string('title');

@@ -1,5 +1,43 @@
+laravel: '@testbench'
+
+providers:
+  - Workbench\App\Providers\WorkbenchServiceProvider
+  - Workbench\App\Providers\Filament\AdminPanelProvider
+
 migrations:
-  - tests/database/migrations
+  - workbench/database/migrations
+
+seeders:
+  - Workbench\Database\Seeders\DatabaseSeeder
+
+env:
+  - AUTH_MODEL='Workbench\App\Models\User'
+
+purge:
+  files:
+    - database/migrations/*_create_recently_table.php
 
 workbench:
+  start: '/admin'
   install: true
+  health: false
+  discovers:
+    web: true
+    api: false
+    commands: true
+    components: false
+    factories: true
+    views: false
+  build:
+    - filament-assets
+    - create-sqlite-db
+    - workbench:install-recently
+    - workbench:assert-recently-migration
+    - db-wipe
+    - migrate-fresh
+  sync:
+    - from: workbench/public/css/filament/admin
+      to: public/css/filament/admin
+    - from: storage
+      to: workbench/storage
+      reverse: true

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Awcodes\Recently\Tests\Resources\Pages\Pages;
+namespace Workbench\App\Filament\Resources\Pages\Pages;
 
-use Awcodes\Recently\Tests\Resources\Pages\PageResource;
 use Filament\Resources\Pages\CreateRecord;
+use Workbench\App\Filament\Resources\Pages\PageResource;
 
 class CreatePage extends CreateRecord
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Awcodes\Recently\Tests\Resources\Pages\Schemas;
+namespace Workbench\App\Filament\Resources\Pages\Schemas;
 
 use Exception;
 use Filament\Forms\Components\RichEditor;

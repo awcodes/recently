@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Awcodes\Recently\Tests\Resources\Pages;
+namespace Workbench\App\Filament\Resources\Pages;
 
-use Awcodes\Recently\Tests\Models\Page;
-use Awcodes\Recently\Tests\Resources\Pages\Schemas\PageForm;
-use Awcodes\Recently\Tests\Resources\Pages\Tables\PagesTable;
 use Exception;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
+use Workbench\App\Filament\Resources\Pages\Schemas\PageForm;
+use Workbench\App\Filament\Resources\Pages\Tables\PagesTable;
+use Workbench\App\Models\Page;
 
 class PageResource extends Resource
 {

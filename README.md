@@ -246,6 +246,33 @@ public function panel(Panel $panel): Panel
 composer test
 ```
 
+## Development
+
+Install dependencies:
+
+```bash
+composer install
+```
+
+Run the test suite:
+
+```bash
+composer test
+```
+
+Start the Workbench application:
+
+```bash
+composer serve
+```
+
+The Workbench is available at `/admin` with these development credentials:
+
+```text
+Email: test@example.com
+Password: password
+```
+
 ## Contributing
 
 If you want to contribute to this plugin, you may want to test it in a real Filament project:
