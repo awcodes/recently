@@ -6,7 +6,12 @@ use Rector\Config\RectorConfig;
 
 return RectorConfig::configure()
     ->withPaths([
-        __DIR__.'/src',
+        __DIR__ . '/src',
+        __DIR__ . '/workbench',
+        __DIR__ . '/config',
+    ])
+    ->withSkip([
+        __DIR__ . '/workbench/storage',
     ])
     ->withPreparedSets(
         deadCode: true,
