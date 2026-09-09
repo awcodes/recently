@@ -175,12 +175,12 @@ class RecentlyPlugin implements Plugin
 
     public function hasGlobalSearch(): bool
     {
-        return $this->evaluate($this->hasGlobalSearch) ?? config('recently.global_search');
+        return $this->evaluate($this->hasGlobalSearch) ?? config('recently.global_search', true);
     }
 
     public function hasMenu(): bool
     {
-        return $this->evaluate($this->hasMenu) ?? config('recently.menu');
+        return $this->evaluate($this->hasMenu) ?? config('recently.menu', true);
     }
 
     public function isRounded(): bool
