@@ -9,6 +9,7 @@ return RectorConfig::configure()
         __DIR__ . '/src',
         __DIR__ . '/workbench',
         __DIR__ . '/config',
+        __DIR__ . '/database',
     ])
     ->withSkip([
         __DIR__ . '/workbench/storage',

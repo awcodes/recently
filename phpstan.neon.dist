@@ -9,6 +9,9 @@ parameters:
         - src
         - workbench
         - config
+        # Migrations and factories are shipped code. phpstan flags wrong-arity
+        # Blueprint calls here — the class of bug postal-codes#12 turned out to be.
+        - database
     excludePaths:
         analyse:
             - workbench/storage (?)
