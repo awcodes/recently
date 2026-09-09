@@ -110,6 +110,10 @@ return [
 ];
 ```
 
+### Retention
+
+Only the most recent `max_items` entries per user are stored — as new records are viewed, older entries beyond that limit are pruned automatically. This keeps the `recent_entries` table bounded, so `max_items` caps stored history, not just what the menu displays.
+
 ### Global Search
 By default, the plugin will list the recent visits/views as part of the global search results. To disable this feature, set the `global_search` option to `false` from the config or by passing `false` to the `globalSearch()` method per panel.
 
