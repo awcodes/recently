@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recently
 {
-    public function add(string $url, string|BackedEnum|null $icon, string $title): void
+    public function add(string $url, string | BackedEnum | null $icon, string $title): void
     {
         if ($icon instanceof Heroicon) {
             $icon = "heroicon-$icon->value";

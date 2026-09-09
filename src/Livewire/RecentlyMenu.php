@@ -28,7 +28,7 @@ class RecentlyMenu extends Component
 
     public ?string $tooltip = null;
 
-    public Width|null|string $width = null;
+    public Width | null | string $width = null;
 
     public function mount(): void
     {

@@ -33,7 +33,7 @@ trait HasRecentHistoryRecorder
         $title = $this->getTitle($record);
 
         if (! $resource::getRecordTitleAttribute()) {
-            $title .= ' '.$record->id;
+            $title .= ' ' . $record->id;
         }
 
         Recently::add(
