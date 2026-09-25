@@ -5,6 +5,16 @@ description: Install Recently, publish its config and migration, and register it
 
 # Installation
 
+## Compatibility
+
+| Filament version | Package version |
+|------------------|-----------------|
+| 3.x              | 1.x             |
+| 5.x              | 2.x             |
+| 4.x & 5.x        | 3.x             |
+
+Recently requires PHP 8.2 or later and `filament/filament` — it is a Panels plugin.
+
 ## Requiring the package
 
 Install the package via Composer:

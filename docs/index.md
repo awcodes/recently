@@ -15,16 +15,6 @@ Each time a tracked page is rendered, Recently stores the page's URL, the resour
 
 History is per user throughout — a global scope on the model constrains every query to the authenticated user, so one user never sees another's records.
 
-## Compatibility
-
-| Package version | Filament version |
-|-----------------|------------------|
-| 1.x             | 3.x              |
-| 2.x             | 5.x              |
-| 3.x             | 4.x & 5.x        |
-
-Recently requires PHP 8.2 or later and `filament/filament` — it is a Panels plugin.
-
 ## Where to go next
 
 - [Installation](installation.md) — install the package, run the installer, register the styles.
