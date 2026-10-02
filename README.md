@@ -1,277 +1,36 @@
 # Recently
 
-Easily track and access recently viewed records in your filament panels.
+Track recently viewed and edited records in your Filament panels and surface them in a topbar menu and global search.
 
 [![Latest Version](https://img.shields.io/github/release/awcodes/recently.svg?style=flat-square&color=blue&label=Release)](https://github.com/awcodes/recently/releases)
 [![MIT Licensed](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE.md)
 [![Total Downloads](https://img.shields.io/packagist/dt/awcodes/recently.svg?style=flat-square&color=blue&label=Downloads)](https://packagist.org/packages/awcodes/recently)
 [![GitHub Repo stars](https://img.shields.io/github/stars/awcodes/recently?style=flat-square&color=blue&label=Stars)](https://github.com/awcodes/recently/stargazers)
+[![Filament Version](https://img.shields.io/badge/Filament-4.x%20%26%205.x-d97706.svg?style=flat-square)](https://filamentphp.com/docs/5.x/panels/installation)
+
+## Documentation
+
+The full documentation lives at **[docs.aw.codes/recently](https://docs.aw.codes/recently/3.x)**.
 
 ## Compatibility
 
-| Package Version | Filament Version |
-|-----------------|------------------|
-| 1.x             | 3.x              |
-| 2.x             | 5.x              |
-| 3.x             | 4.x & 5.x        |
-
-<!-- [docs_start] -->
+| Filament version | Package version |
+|------------------|-----------------|
+| 3.x              | 1.x             |
+| 5.x              | 2.x             |
+| 4.x & 5.x        | 3.x             |
 
 ## Installation
-
-You can install the package via composer then run the installation command and follow the prompts:
 
 ```bash
 composer require awcodes/recently
 ```
 
-```bash
-php artisan recently:install
-``` 
+Then run `php artisan recently:install` to publish the config and migration, and add the package's views to your Tailwind theme — see [Installation](https://docs.aw.codes/recently/3.x/installation) for both steps.
 
-> [!IMPORTANT]
-> If you have not set up a custom theme and are using Filament Panels follow the instructions in the [Filament Docs](https://filamentphp.com/docs/4.x/styling/overview#creating-a-custom-theme) first.
+## Changelog
 
-After setting up a custom theme add the plugin's views to your theme css file or your app's css file if using the standalone packages.
-
-```css
-@source '../../../../vendor/awcodes/recently/resources/**/*.blade.php';
-```
-
-## Usage
-The plugin adds a “Recently Viewed” functionality in your filament panel(s), letting users quickly access resources they’ve recently interacted with. It tracks views/visits to `EditRecord` and `ViewRecord` pages of resources where it’s enabled.
-
-### Registering the plugin
-
-```php
-use Awcodes\Recently\RecentlyPlugin;
-
-public function panel(Panel $panel): Panel
-{
-    return $panel
-        ->plugins([
-            RecentlyPlugin::make(),
-        ])
-}
-```
-
-### Possible Conflicts
-
-If you are using `QuickCreatePlugin` or `OverlookPlugin` you will need to exclude the `RecentEntryResource` from them.
-
-```php
-OverlookPlugin::make()
-    ->excludes([
-        RecentEntryResource::class,
-    ]),
-QuickCreatePlugin::make()
-    ->excludes([
-        RecentEntryResource::class,
-    ]),
-```
-
-### Tracking Recent
-To record recent edits/views, include the trait on `EditRecord` or `ViewRecord` pages of the resources you want to monitor:
-
-**Recent Edits**:
-```php
-use Awcodes\Recently\Concerns\HasRecentHistoryRecorder;
-
-class EditUser extends EditRecord
-{
-    use HasRecentHistoryRecorder;
-
-    protected static string $resource = UserResource::class;
-}
-```
-**Recent Views**:
-```php
-class ViewUser extends ViewRecord
-{
-    use HasRecentHistoryRecorder;
-
-    protected static string $resource = UserResource::class;
-}
-```
-
-## Configuration
-You can enable/disable or customize the plugin's features either globally through the `config` file or per panel.
-
-```php
-// config/recently.php
-return [
-    'model' => Awcodes\Recently\Models\RecentEntry::class,
-    'user_model' => App\Models\User::class,
-    'max_items' => 20,
-    'width' => 'xs',
-    'global_search' => true,
-    'menu' => true,
-    'icon' => 'heroicon-o-arrow-uturn-left',
-];
-```
-
-### Global Search
-By default, the plugin will list the recent visits/views as part of the global search results. To disable this feature, set the `global_search` option to `false` from the config or by passing `false` to the `globalSearch()` method per panel.
-
-```php
-use Awcodes\Recently\RecentlyPlugin;
-
-public function panel(Panel $panel): Panel
-{
-    return $panel
-        ->plugins([
-            RecentlyPlugin::make()
-                ->globalSearch(condition: false),
-        ])
-}
-```
-
-### Menu
-By default, the plugin will list the recent visits/views as a dropdown menu in the topbar using the `PanelsRenderHook::USER_MENU_BEFORE` render hook. To disable this feature, set the `menu` option to `false` in the config or by passing `false` to the `menu()` method per panel.
-
-```php
-use Awcodes\Recently\RecentlyPlugin;
-
-public function panel(Panel $panel): Panel
-{
-    return $panel
-        ->plugins([
-            RecentlyPlugin::make()
-                ->menu(condition: false),
-        ])
-}
-```
-
-## Appearance
-
-### Icon
-Set a custom `icon` for the **menu**.
-```php
-use Awcodes\Recently\RecentlyPlugin;
-
-public function panel(Panel $panel): Panel
-{
-    return $panel
-        ->plugins([
-            RecentlyPlugin::make()
-                ->icon('heroicon-o-clock'),
-        ]);
-}
-```
-
-### Rounded
-The menu icon is round you can opt out of this by passing `false` to the `rounded()` method.
-```php
-use Awcodes\Recently\RecentlyPlugin;
-
-public function panel(Panel $panel): Panel
-{
-    return $panel
-        ->plugins([
-            RecentlyPlugin::make()
-                ->rounded(condition: false),
-        ]);
-}
-```
-
-### Label
-The menu has no label, but you can set a custom `label` by passing a string to the `label()` method.
-```php
-use Awcodes\Recently\RecentlyPlugin;
-
-public function panel(Panel $panel): Panel
-{
-    return $panel
-        ->plugins([
-            RecentlyPlugin::make()
-                ->label('Recently Viewed Records'),
-        ]);
-}
-```
-
-### Width
-The dropdown menu uses the filament [dropdown blade component](https://filamentphp.com/docs/3.x/support/blade-components/dropdown#setting-the-width-of-a-dropdown), so you can use any of the options available, the default is `xs`.
-
-```php
-use Awcodes\Recently\RecentlyPlugin;
-
-public function panel(Panel $panel): Panel
-{
-    return $panel
-        ->plugins([
-            RecentlyPlugin::make()
-                ->width('sm'),
-        ]);
-}
-```
-
-### Max Items
-Specify the maximum number of recently viewed items to display in the **menu**.
-
-```php
-use Awcodes\Recently\RecentlyPlugin;
-
-public function panel(Panel $panel): Panel
-{
-    return $panel
-        ->plugins([
-            RecentlyPlugin::make()
-                ->maxItems(10),
-        ]);
-}
-```
-
-### Render Hook
-The plugin will render the menu using the `PanelsRenderHook::USER_MENU_BEFORE` hook. However, you can change this using the `renderUsingHook()` method by providing one of the other available filament [Render Hooks](https://filamentphp.com/docs/3.x/support/render-hooks).
-
-```php
-use Awcodes\Recently\RecentlyPlugin;
-use Filament\View\PanelsRenderHook;
-
-public function panel(Panel $panel): Panel
-{
-    return $panel
-        ->plugins([
-            RecentlyPlugin::make()
-                ->renderUsingHook(PanelsRenderHook::USER_MENU_AFTER),
-        ]);
-}
-```
-
-<!-- [docs_end] -->
-
-## Testing
-
-```bash
-composer test
-```
-
-## Development
-
-Install dependencies:
-
-```bash
-composer install
-```
-
-Run the test suite:
-
-```bash
-composer test
-```
-
-Start the Workbench application:
-
-```bash
-composer serve
-```
-
-The Workbench is available at `/admin` with these development credentials:
-
-```text
-Email: test@example.com
-Password: password
-```
+Please see the [releases](https://github.com/awcodes/recently/releases) for what has changed recently.
 
 ## Contributing
 
