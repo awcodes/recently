@@ -34,29 +34,6 @@ Please see the [releases](https://github.com/awcodes/recently/releases) for what
 
 ## Contributing
 
-If you want to contribute to this plugin, you may want to test it in a real Filament project:
-
--   Fork this repository to your GitHub account.
--   Create a Filament app locally.
--   Clone your fork in your Filament app's root directory.
--   In the `/recently` directory, create a branch for your fix, e.g. `fix/error-message`.
-
-Install the plugin in your app's `composer.json`:
-
-```json
-"require": {
-    "awcodes/recently": "dev-fix/error-message as main-dev",
-},
-"repositories": [
-    {
-        "type": "path",
-        "url": "recently"
-    }
-]
-```
-
-Now, run `composer update`.
-
 Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities

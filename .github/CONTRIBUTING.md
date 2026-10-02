@@ -36,6 +36,76 @@ Before submitting a pull request:
 - Check the codebase to ensure that your feature doesn't already exist.
 - Check the pull requests to ensure that another person hasn't already submitted the feature or fix.
 
+## Development
+
+Install dependencies:
+
+```bash
+composer install
+```
+
+Start the Workbench application:
+
+```bash
+composer serve
+```
+
+The Workbench is available at `/admin` with these development credentials:
+
+```text
+Email: test@example.com
+Password: password
+```
+
+### Testing in a Filament app
+
+You may also want to test your changes in a real Filament project:
+
+- Fork this repository to your GitHub account.
+- Create a Filament app locally.
+- Clone your fork in your Filament app's root directory.
+- In the `/recently` directory, create a branch for your fix, e.g. `fix/error-message`.
+
+Install the plugin in your app's `composer.json`:
+
+```json
+"require": {
+    "awcodes/recently": "dev-fix/error-message as 3.x-dev"
+},
+"repositories": [
+    {
+        "type": "path",
+        "url": "recently"
+    }
+]
+```
+
+Now, run `composer update`.
+
+## Testing
+
+Run the full suite (Rector dry run, Pint, PHPStan and Pest):
+
+```bash
+composer test
+```
+
+Or run a single check:
+
+```bash
+composer test:unit
+composer test:types
+composer test:lint
+composer test:refactor
+```
+
+Apply Pint and Rector fixes:
+
+```bash
+composer lint
+composer refactor
+```
+
 ## Requirements
 
 If the project maintainer has any additional requirements, you will find them listed here.
