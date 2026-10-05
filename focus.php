@@ -37,14 +37,15 @@ return ScreenshotSuite::make()
             ->viewport(),
 
         // The share-image source. The two-up templates show it dark in slot 1 and light in slot 2, so it is
-        // captured in both themes. Slot 1 covers the right of slot 2, where the menu opens, so both slots use it.
+        // captured in both themes. Slot 1 sits in front of the lower left of slot 2, clear of the menu at the
+        // top right, so both slots use it.
         Screenshot::make('card-menu')
             ->viewportSize(...$card)
             ->visit('/admin/pages')
             ->click('button[aria-label="Recent Records"]')
             ->viewport(),
     ])
-    ->cardTemplates('https://github.com/awcodes/focus-templates/tree/v1.1.1/dist')
+    ->cardTemplates('https://github.com/awcodes/focus-templates/tree/v2.1.0/dist')
     ->cards([
         // Open Graph and the GitHub social preview share one 2400x1260 template; GitHub crops 30px top and bottom.
         Card::make('social')
@@ -59,4 +60,11 @@ return ScreenshotSuite::make()
             ->title('Recently')
             ->screenshots(['card-menu', 'card-menu'])
             ->sizes([Size::Filament]),
+
+        // Unbranded 16:9 image for aw.codes, which adds its own heading: the same screenshots, no text or logo.
+        Card::make('plain')
+            ->template('two-up-plain')
+            ->screenshots(['card-menu', 'card-menu'])
+            ->sizes([[2560, 1440]])
+            ->scale(1),
     ]);
