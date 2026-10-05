@@ -34,7 +34,7 @@
             </button>
         </x-slot>
         @if (filled($records))
-            <x-filament::dropdown.list>
+            <x-filament::dropdown.list data-focus="recently-menu">
             @foreach($records as $record)
                 <x-filament::dropdown.list.item
                     :icon="filled($record['icon']) ? $record['icon'] : $icon"

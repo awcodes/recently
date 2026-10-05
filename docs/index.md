@@ -9,6 +9,9 @@ Recently records the resource pages each user opens in a Filament panel and give
 
 Tracking is opt-in per page: you add a trait to the `EditRecord` and `ViewRecord` pages you want recorded, so only the resources you choose end up in a user's history.
 
+![The Recently menu open in the topbar, listing six recently edited pages, newest first, above a Clear History action](assets/menu-light.png#gh-light-mode-only)
+![The Recently menu open in the topbar, listing six recently edited pages, newest first, above a Clear History action](assets/menu-dark.png#gh-dark-mode-only)
+
 ## How it works
 
 Each time a tracked page is rendered, Recently stores the page's URL, the resource's navigation icon and the record's title against the current user. Entries are keyed on the user and the URL, so revisiting a record moves it back to the top of the list rather than creating a duplicate.
