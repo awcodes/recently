@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Workbench\App\Filament\Resources\Pages;
 
+use BackedEnum;
 use Exception;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Workbench\App\Filament\Resources\Pages\Schemas\PageForm;
 use Workbench\App\Filament\Resources\Pages\Tables\PagesTable;
@@ -15,6 +17,13 @@ use Workbench\App\Models\Page;
 class PageResource extends Resource
 {
     protected static ?string $model = Page::class;
+
+    protected static string | BackedEnum | null $navigationIcon = Heroicon::OutlinedDocumentText;
+
+    protected static ?string $recordTitleAttribute = 'title';
+
+    // Recently's own resource provides global search; pages are listed there once visited.
+    protected static bool $isGloballySearchable = false;
 
     /** @throws Exception */
     public static function form(Schema $schema): Schema

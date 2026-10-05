@@ -35,7 +35,12 @@ return [
 
 ## Global search
 
-By default entries are listed in the panel's global search results. To turn that off, set `global_search` to `false` in the config, or pass `false` per panel:
+By default entries are listed in the panel's global search results, under their own Recently group:
+
+![Global search for "pr" showing two recent entries, Edit Pricing and Edit Privacy Policy, under the Recently group](assets/global-search-light.png#gh-light-mode-only)
+![Global search for "pr" showing two recent entries, Edit Pricing and Edit Privacy Policy, under the Recently group](assets/global-search-dark.png#gh-dark-mode-only)
+
+To turn that off, set `global_search` to `false` in the config, or pass `false` per panel:
 
 ```php
 use Awcodes\Recently\RecentlyPlugin;
