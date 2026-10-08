@@ -16,6 +16,7 @@ env:
 purge:
   files:
     - database/migrations/*_create_recently_table.php
+    - database/migrations/*_add_recordable_to_recent_entries_table.php
 
 workbench:
   start: '/admin'

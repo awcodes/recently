@@ -29,7 +29,7 @@ Then run the installer and follow the prompts:
 php artisan recently:install
 ```
 
-The installer publishes the config file, publishes the migration, offers to run it, and offers to star the repository on GitHub. The migration creates a `recent_entries` table holding the user reference, URL, icon, title and timestamps.
+The installer publishes the config file, publishes the migrations, offers to run them, and offers to star the repository on GitHub. The migrations create a `recent_entries` table holding the user reference, URL, icon, title and timestamps, plus optional columns referencing each entry's record, which are used by [deleted records](configuration.md#deleted-records).
 
 ## Registering the styles
 

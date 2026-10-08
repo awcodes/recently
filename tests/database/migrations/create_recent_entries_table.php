@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('url');
             $table->string('icon');
             $table->string('title');
+            $table->nullableMorphs('recordable');
 
             $table->timestamps();
         });

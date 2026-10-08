@@ -44,6 +44,7 @@ class RecentlyServiceProvider extends PackageServiceProvider
     {
         return [
             'create_recently_table',
+            'add_recordable_to_recent_entries_table',
         ];
     }
 }
