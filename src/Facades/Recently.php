@@ -7,7 +7,8 @@ namespace Awcodes\Recently\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static void add(string $url, string $icon, string $title)
+ * @method static void add(string $url, string|\BackedEnum|null $icon, string $title, ?\Illuminate\Database\Eloquent\Model $record = null)
+ * @method static bool tracksRecords()
  *
  * @see \Awcodes\Recently\Recently
  */

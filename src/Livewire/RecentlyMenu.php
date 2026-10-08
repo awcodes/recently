@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Awcodes\Recently\Livewire;
 
+use Awcodes\Recently\Facades\Recently;
 use Awcodes\Recently\RecentlyPlugin;
 use Filament\Support\Enums\Width;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Attributes\Computed;
@@ -51,6 +53,7 @@ class RecentlyMenu extends Component
         $model = config('recently.model');
 
         $this->records = $model::query()
+            ->when(Recently::tracksRecords(), fn (Builder $query) => $query->whereRecordExists())
             ->orderByDesc('updated_at')
             ->limit($this->maxItems)
             ->get();

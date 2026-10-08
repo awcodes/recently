@@ -11,4 +11,8 @@ return [
     'global_search' => true,
     'menu' => true,
     'icon' => 'heroicon-o-arrow-uturn-left',
+    'max_stored_items' => null,
+    'prune_after_days' => null,
+    'track_records' => false,
+    'include_trashed_records' => false,
 ];
